@@ -1,0 +1,37 @@
+    1  vim /etc/yum.repos.d/new.repo
+    2  yum install -y httpd
+    3  systemctl enable --now httpd
+    4  useradd neha
+    5  useradd simone
+    6  useradd alex
+    7  mkdir /rhome
+    8  useradd -b /rhome remoteuser18
+    9  groupadd elite
+   10  yum install -y nfs-utils cifs-utils
+   11  history 
+   12  ifconfig 
+   13  mkdir /mount
+   14  mount 192.168.172.130:/rhome/remoteuser18 /mount/
+   15  umount /mount 
+   16  vim /etc/httpd/conf/httpd.conf 
+   17  rm -f /etc/yum.repos.d/new.repo 
+   18  systemctl set-default multi-user.target 
+   19  init 0
+   20  ping 192.168.172.136
+   21  ssh root@192.168.172.136 
+   22  vim /etc/ssh/ssh_config
+   23  vim /etc/ssh/sshd_config
+   24  ifconfig 
+   25  vim /etc/ssh/sshd_config
+   26* 
+   27  ssh root@192.168.172.136 
+   28  ssh-keygen 
+   29  ls .ssh/
+   30  ssh-copy-id root@192.168.172.136
+   31  ssh root@192.168.172.136 
+   32  ssh user1@192.168.172.136 
+   33  cat .ssh/id_rsa.pub 
+   34  ssh user1@192.168.172.136 
+   35  ssh user1@192.168.172.136 -vvv
+   36  history 
+   37  history >/ssh_client

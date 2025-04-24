@@ -1,0 +1,59 @@
+------- Server entries-------------
+
+   yum install nfs-utils -y
+   systemctl restart nfs-utils.service 
+   systemctl restart nfs-server.service 
+   systemctl enable nfs-server.service 
+   getenforce 
+   setenforce 0
+   getenforce 
+   firewall-cmd --permanent --add-service=nfs
+   firewall-cmd --permanent --add-service=mountd 
+   firewall-cmd --reload 
+   firewall-cmd --list-services 
+   mkdir /database
+   vim /etc/exports
+		
+         /database       *(rw,sync)
+
+   exportfs -rv
+   systemctl restart nfs-server.service 
+   systemctl restart rpcbind.service 
+   cd /database
+   pwd
+   touch morning 
+   ll
+   ip a
+
+------------------------ After Client Entry -------------------
+
+   ls -ld database/
+   chmod 777 database/
+   ls -ld database/
+   cd database/
+   ll
+
+
+------------- Client entries --------------------
+  yum install nfs-utils
+  systemctl restart nfs-utils.service 
+  systemctl restart nfs-server.service
+  systemctl enable nfs-server.service
+  mkdir /first_gen
+  vim /etc/fstab
+
+	192.168.13.135:/database                /first_gen              nfs     defaults        0 0 
+	{server ip}     {server dir}		{client dir}
+
+  systemctl restart nfs-server.service 
+  mount -a
+  lsblk
+  df -h
+  cd /first_gen/
+  ll
+  touch hii
+  ll
+  mkdir mobile
+  ll
+
+

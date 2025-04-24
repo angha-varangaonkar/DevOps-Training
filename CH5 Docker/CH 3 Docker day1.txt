@@ -1,0 +1,58 @@
+    2  docker start cefcd12e6a03
+    3  docker start 41e4bc12d98c
+    4  docker attach 41e4bc12d98c
+    5  docker logs 41e4bc12d98c
+    6  docker top 41e4bc12d98c
+    7  docker stop 41e4bc12d98c
+    8  docker start 41e4bc12d98c
+    9  useradd -s /sbin/nologin abc
+   10  su - abc
+   11  su - abc -s /bin/bash
+   12  docker exec -it 41e4bc12d98c bash
+   13  docker rm -f cefcd12e6a03
+   14  history
+   15  history >/docker-day1
+   16  docker rename 41e4bc12d98c con1
+   17  docker exec -it con1 ls /
+   18  docker exec -it con1 rm -f /abc
+   19  docker exec -it con1 ls /
+   20  touch abc.txt
+   21  docker cp -it abc.txt con1:/
+   22  docker cp  abc.txt con1:/
+   23  docker exec -it con1 ls /
+   24  history >/docker-day1
+   25  docker container run -itd --name con2 --hostname con2 centos:latest
+
+   26  docker pull nginx
+   27  docker images
+   28  docker image inspect nginx:latest
+   29  docker container run -d --name nginx-web nginx:latest
+   30  docker exec -it nginx-web /bin/bash
+   31  docker stop con1
+   32  docker stop con2
+   33  docker stop nginx-web
+   34  docker start con1
+   35  docker rm con1
+   36  docker rm -f con1
+   37  docker rm -f $(docker ps -qa)
+   38  history >/docker-day1
+   39  history
+   40  docker run -itd --name web1 --hostname apache centos:latest
+   41  docker ps
+   42  docker exec -it web1 bash
+   43  systemctl disable sshd
+   44  systemctl enable sshd
+   45  vim /usr/lib/systemd/system/sshd.service
+   46  docker exec -it web1 bash
+   47  docker container inspect web1
+   48  curl http://172.17.0.2
+   49  docker container run -d --name web-nginx nginx:latest
+   50  docker ps
+   51  docker rm -f web-nginx
+   52  docker container run -d --name web-nginx -p 80:80 nginx:latest
+   53  docker ps
+   54  docker exec -it web-nginx bash
+   55  vim index.html
+   56  docker cp index.html web-nginx:/usr/share/nginx/html/
+   57  history
+   58  history >/docker-day1

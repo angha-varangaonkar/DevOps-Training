@@ -1,0 +1,35 @@
+---
+ - name: configure nfs-server
+   hosts: mh1
+   tasks:
+             - name: install nfs
+               yum:
+                     name: nfs-utils
+                     state: present
+
+             - name: start/enable nfs service
+               service:
+                       name: nfs-server.service
+                       state: started
+                       enabled: yes
+
+             - name: add 2049/tcp on firewall
+               firewalld:
+                       port: 2049/tcp
+                       permanent: true
+                       state: enabled
+                       immediate: true
+
+             - name: create a dire
+               file:
+                      path: /nfs_share
+                      state: directory
+                      mode: 777
+
+             - name: modify exports file
+               lineinfile:
+                      path: /etc/exports
+                      line: /nfs_share   172.31.6.147(rw,sync)
+
+             - name: reload exports file
+               command: exportfs -r

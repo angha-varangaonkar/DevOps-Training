@@ -1,0 +1,53 @@
+------- Server entries-------------
+
+    yum install nfs-utils -y
+    systemctl restart nfs-utils.service 
+    systemctl restart nfs-server.service 
+    systemctl enable nfs-server.service 
+    getenforce 
+    setenforce 0
+    getenforce 
+    firewall-cmd --permanent --add-service=nfs
+    firewall-cmd --permanent --add-service=mountd 
+    firewall-cmd --reload 
+    firewall-cmd --list-services 
+    mkdir /sunday
+    vim /etc/exports
+		
+		/sunday       *(rw,sync)
+
+    exportfs -rv
+    systemctl restart nfs-server.service 
+    systemctl restart rpcbind.service 
+    cd /sunday
+    chmod 777 /sunday
+
+
+------------------ Clinet entries -----------------
+
+    yum install autofs
+    systemctl restart autofs
+    systemctl enable autofs
+    vim /etc/auto.master.d/aa.autofs
+
+	/-      /etc/auto.misc
+
+    vim /etc/auto.misc 
+
+		 /sunday         -rw,soft,intr           192.168.13.135:/sunday
+     {server dir location}				  {server ip}    {server dir location}
+
+    systemctl restart autofs
+    systemctl enable autofs
+    cd
+    mount -a
+    cd /sunday/
+    ll
+    mkdir hii
+    touch jii
+    mkdir hii
+    touch jii
+    ll
+    cd
+
+

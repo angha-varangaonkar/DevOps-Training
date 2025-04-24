@@ -1,0 +1,38 @@
+ 1  yum install -y nfs-utils
+    2  systemctl enable --now nfs-server.service 
+    3  systemctl status nfs-server.service 
+    4  firewall-cmd --add-port=2049/tcp --permanent 
+    5  firewall-cmd --reload 
+    6  mkdir /nfs_share
+    7  ping 192.168.172.136
+    8  vim /etc/exports
+    9  exportfs -rv
+   10  exportfs -v
+   11  systemctl reload nfs-server.service 
+   12  ifconfig 
+   13  ls /nfs_share/
+   14  touch test
+   15  ls /nfs_share/
+   16  touch /nfs_share/test
+   17  vim /etc/exports
+   18  exportfs -v
+   19  exportfs -vr
+   20  exportfs -v
+   21  exportfs -r
+   22  ls -ld /nfs_share/
+   23  exportfs -v
+   24  grep nobody /etc/passwd
+   25  vim /etc/exports
+   26  exportfs -v
+   27  exportfs -r
+   28  exportfs -vr
+   29  exportfs -v
+   30  ls /nfs_share/
+   31  useradd -u 1122 bob
+   32  chown bob /nfs_share/
+   33  ls -ld /nfs_share/
+   34  id bob
+   35  vim /etc/exports
+   36  exportfs -vr
+   37  ifconfig 
+   38  history >/nfs_server_history

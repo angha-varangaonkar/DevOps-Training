@@ -1,0 +1,44 @@
+
+       whoami
+    2  hostname
+    3  hostnamectl set-hostname techno.NJR
+    4  hostname
+    5  bash
+    6  history 
+  1  pwd
+    2  ls
+    3  ls /
+    4  ls /root
+    5  ls /boot
+    6  touch 
+    7  touch devops
+    8  ls
+    9  mkdir techno
+   10  ls
+   11  cat devops 
+   12  cat anaconda-ks.cfg 
+   13  date
+   14  cal
+   15  cal 3 2025
+   16  cat 1
+   17  cat 0001
+   18  cal 1
+   19  cal 3030
+   20  history 
+   21  file devops 
+   22  file Downloads/
+   23  file anaconda-ks.cfg 
+   24  hostnamectl 
+   25  uname
+   26  man uname
+   27  uname --help
+   28  uname -s
+   29  uname -n
+   30  uname -r
+   31  uname -r -s -n
+   32  uname -rns
+   33  uname -a
+   34  free 
+   35  free -h
+   36  free --help
+   37  history

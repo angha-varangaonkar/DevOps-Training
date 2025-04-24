@@ -1,0 +1,146 @@
+  218  ls diff/
+  219  docker run -itd --name con1 centos:latest
+  220  docker ps
+  221  cd ..
+  222  pwd
+  223  ls
+  224  ls ef35ae9f5709e84ecffdcdd14e93eb85dc847ff76552537aa56b8a3b9885f726/diff/
+  225  ls
+  226  cd ~
+  227  ls
+  228  docker cp local.repo con1:/
+  229  cd -
+  230  ls ef35ae9f5709e84ecffdcdd14e93eb85dc847ff76552537aa56b8a3b9885f726/diff/
+  231  cd 6c482dfaf6c7abcd9a529a07abcda50e0f3cf2f1179e355d2a468cc530f87e5f/
+  232  cd diff/
+  233  ls
+  234  pwd
+  235  cd ..
+  236  pwd
+  237  ls
+  238  cat link
+  239  cd ..
+  240  pwd
+  241  ls
+  242  ls -l /
+  243  ls -l l
+  244  cd
+  245  docker attach con1
+  246  docker inspect con1
+  247  curl http://172.17.0.2
+  248  docker commit con1 centos-web:v1
+  249  docker images
+  250  docker rm -f con1
+  251  docker rmi centos
+  252  docker images
+  253  docker image inspect centos-web:v1
+  254  cd /var/lib/docker/overlay2/5b512d84c41ff3c9526914b3a1cbc0e62a551388790c7de196e745db51829921/
+  255  ls
+  256  cat lower
+  257  ls diff/
+  258  ls diff/usr/
+  259  ls diff/usr/sbin/
+  260  ls -l diff/usr/sbin/
+  261  cd
+  262  docker run -itd --name con1 -p 80:80 centos-web:v1
+  263  docker attach con1
+  264  docker rm -f con1
+  265  docker image prune -a
+  266  docker images
+  267  cd -
+  268  cd
+  269  cd /var/lib/docker/overlay2/
+  270  ls
+  271  docker system prune -a
+  272  ls
+  273  cd
+  274  vim Dockerfile
+  275  docker image build . -t  mycafe:v1
+  276  docker images
+  277  docker image inspect mycafe:v1
+  278  docker ps
+  279  docker run -itd --name cafe --restart always mycafe:v1
+  280  docker rm -f cafe
+  281  docker run -itd --name cafe --restart always -p 80:80 mycafe:v1
+  282  mkdir /django
+  283  yum install -y git
+  284  cd /django/
+  285  git clone https://github.com/sunilkumar0633/social_media.git
+  286  ls
+  287  cd social_media/
+  288  ls
+  289  vim requirements.txt
+  290  vim Dockerfile
+  291  docker image build . social-media:v1
+  292  docker image build . -t social-media:v1
+  293  vim Dockerfile
+  294  docker image build . -t social-media:v1
+  295  vim Dockerfile
+  296  vim social/settings.py
+  297  vim Dockerfile
+  298  docker image build . -t social-media:v1
+  299  vim Dockerfile
+  300  docker images
+  301  docker container run -itd --name social -p 8000:8000 social-media:v1
+  302  docker ps
+  303  netstat -tulpn | grep 8000
+  304  ls
+  305  vim social/settings.py
+  306  ls static/
+  307  vim social/settings.py
+  308  vim Dockerfile
+  309  docker image build . -t social-media1:v1
+  310  vim social/settings.py
+  311  docker rm -f social
+  312  docker container run -itd --name social -p 8000:8000 social-media1:v1
+  313  docker ps
+  314  vim social/settings.py
+  315  docker image build . -t social-media1:v1
+  316  docker rm -f social
+  317  docker container run -itd --name social -p 8000:8000 social-media1:v1
+  318  docker images
+  319  docker inspect social
+  320  curl http://172.17.0.3
+  321  curl http://172.17.0.3:8000
+  322  docker exec -it social
+  323  docker exec -it social bash
+  324  vim social/settings.py
+  325  docker exec -it social bash
+  326  docker cp social/settings.py social:/app/social
+  327  docker rm -f social
+  328  docker rmi social-media
+  329  docker rmi social-media:v1
+  330  docker rmi social-media1:v1
+  331  docker images
+  332  docker rmi aae8e3a6f6d9
+  333  vim social/settings.py
+  334  docker image build . -t social-media:v1
+  335  docker container run -itd --name social -p 8000:8000 social-media:v1
+  336  docker ps
+  337  vim social/settings.py
+  338  docker login -u jacksneel
+  339  docker tag social-media:v1 jacksneel/social:v1
+  340  docker push jacksneel/social:v1
+  341  docker tag social-media:v1 jacksneel/social:latest
+  342  docker push jacksneel/social:latest
+  343  docker push --help
+  344  docker rm -f social
+  345  docker rm -f cafe
+  346  docker system prune -a
+  347  docker container run -itd --name social -p 8000:8000 social-media:v1
+  348  docker container run -itd --name social -p 8000:8000 jacksneel/social
+  349  curl -SL https://github.com/docker/compose/releases/download/v2.33.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+  350  chmod a+x /usr/local/bin/docker-compose
+  351  $PATH
+  352  export PATH=$PATH:/usr/local/bin
+  353  docker-compose -version
+  354  docker-compose --version
+  355  ls
+  356  cd
+  357  ls
+  358  vim app.py
+  359  vim Dockerfile
+  360  vim requirements.txt
+  361  vim docker-compose.yaml
+  362  docker-compose up -d
+  363  history >/docker_last

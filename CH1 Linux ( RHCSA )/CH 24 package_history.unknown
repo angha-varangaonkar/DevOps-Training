@@ -1,0 +1,100 @@
+  112  exit
+  113  useradd abc
+  114  passwd 
+  115  passwd abc
+  116  useradd xyz
+  117  passwd xyz
+  118  su - jk
+  119  exit
+  120  cd /var/lib/rpm
+  121  ls -l
+  122  find / -name rpm
+  123  cd /usr/lib/rpm/
+  124  ls -l
+  125  pwd
+  126  cd /var/lib/rpm
+  127  ls -l
+  128  ls -lh
+  129  cat rpmdb.sqlite
+  130  ls -lh
+  131  stat /
+  132  cd
+  133  rpm -q vsftpd
+  134  rpm -q coreutils
+  135  rpm -q coreut
+  136  rpm -qa 
+  137  rpm -qi rsync
+  138  rpm -qf /etc/passwd
+  139  which useradd 
+  140  rpm -qf /usr/sbin/useradd
+  141  which setfact
+  142  rpm -qf /usr/bin/which
+  143  which setfacl
+  144  rpm -qf /usr/bin/setfacl 
+  145  rpm -ql shadow-utils
+  146  rpm -qc shadow-utils
+  147  rpm -qpR shadow-utils
+  148  rpm -q shadow-utils
+  149  rpm --help
+  150  wget https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/vsftpd-3.0.3-49.el9.x86_64.rpm
+  151  ping www.google.com
+  152  ls
+  153  rpm -ivh vsftpd-3.0.3-49.el9.x86_64.rpm 
+  154  rpm -q vsftpd
+  155  rpm -ql vsftpd
+  156  rpm -qc vsftpd
+  157  wget https://pkgs.sysadmins.ws/el9/modular/x86_64/httpd/httpd-2.4.58-1.el9.x86_64.rpm
+  158  ls
+  159  rpm -ivh httpd-2.4.58-1.el9.x86_64.rpm 
+  160  rpm -evh vsftpd
+  161  lsblk
+  162  cd /run/media/root/RHEL-9-0-0-BaseOS-x86_64
+  163  pwd
+  164  ls
+  165  cd AppStream/
+  166  ls
+  167  cd Packages/
+  168  ls
+  169  rpm -qi xcb-util 
+  170  rpm -qi vsftpd
+  171  rpm -qi vsftpd-3.0.3-49.el9.x86_64.rpm
+  172  lsblk
+  173  ls
+  174  cd ..
+  175  ls
+  176  ls repodata/
+  177  cd /var/lib/rpm
+  178  ls -l
+  179  ls -lh
+  180  lsblk
+  181  cd /run/media/root/RHEL-9-0-0-BaseOS-x86_64
+  182  ls
+  183  cd AppStream/
+  184  ls
+  185  pwd
+  186  cd ..
+  187  ls
+  188  cd BaseOS/
+  189  ls
+  190  pwd
+  191  cd /etc/yum.repos.d/
+  192  ls
+  193  vim redhat.repo 
+  194  vim techno.repo
+  195  cd
+  196  yum repolist 
+  197  yum info 
+  198  yum install vsftpd
+  199  yum install httpd
+  200  yum clean all 
+  201  yum update 
+  202  yum info mysql
+  203  vim /etc/yum.repos.d/techno.repo 
+  204  yum clean all
+  205  yum update httpd
+  206  yum update 
+  207  yum install -y ansible
+  208  history 
+  209  history | tail -115
+  210  history | tail -105
+  211  history | tail -100 >/package_history

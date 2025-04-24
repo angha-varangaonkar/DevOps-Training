@@ -1,0 +1,124 @@
+    1  21/01/25 09:34:06pwd
+    2  21/01/25 09:34:55mkdir /techno
+    3  21/01/25 09:35:02mkdir /copy
+    4  21/01/25 09:35:09pwd
+    5  21/01/25 09:35:25ls  /techno/
+    6  21/01/25 09:36:57touch /techno/file{1..5}.txt
+    7  21/01/25 09:37:08ls /techno/
+    8  21/01/25 09:39:34cp  /techno/file1.txt /copy/
+    9  21/01/25 09:39:41ls /copy/
+   10  21/01/25 09:40:29cp /techno/* /copy/
+   11  21/01/25 09:41:18rm /copy/file5.txt 
+   12  21/01/25 09:41:42ls /copy/
+   13  21/01/25 09:42:28rm -f /copy/*
+   14  21/01/25 09:42:33ls /copy/
+   15  21/01/25 09:43:25touch /techno/{adi,anagha,sunil}
+   16  21/01/25 09:43:34ls /techno/
+   17  21/01/25 09:44:28cp /techno/*.txt /copy/
+   18  21/01/25 09:44:33ls /copy/
+   19  21/01/25 09:45:11cp /techno/{adi,sunil} /copy/
+   20  21/01/25 09:45:15ls /copy/
+   21  21/01/25 09:45:32rm -f /copy/{adi,sunil}
+   22  21/01/25 09:45:35ls /copy/
+   23  21/01/25 09:46:32mkdir  /techno/{dire1,dire2,dire3}
+   24  21/01/25 09:46:36ls /techno/
+   25  21/01/25 09:47:01cp /techno/dire1/  /copy/
+   26  21/01/25 09:48:03cp --help
+   27  21/01/25 09:49:11cp -r /techno/dire1/ /copy/
+   28  21/01/25 09:49:23cp -rv /techno/dire2 /copy/
+   29  21/01/25 09:50:37cp -rv /techno/dire2 /copy/direx
+   30  21/01/25 09:50:43ls /copy/
+   31  21/01/25 09:51:25touch /copy/direx/{a,b,c}
+   32  21/01/25 09:51:56rmdir  /copy/dire1/
+   33  21/01/25 09:52:01ls /copy/
+   34  21/01/25 09:52:09rmdir  /copy/direx/
+   35  21/01/25 09:52:40rm /copy/direx/
+   36  21/01/25 09:53:42rm -rfv /copy/direx/
+   37  21/01/25 09:54:37mkdir /move
+   38  21/01/25 09:54:52ls /copy/
+   39  21/01/25 09:56:39mv /copy/f* /move/
+   40  21/01/25 09:56:44ls /move/
+   41  21/01/25 09:56:47ls /copy/
+   42  21/01/25 09:57:05mv /copy/dire2/ /move/jk
+   43  21/01/25 09:57:11ls /copy/
+   44  21/01/25 09:57:14ls /move/
+   45  21/01/25 09:58:01mv /move/jk /move/pk
+   46  21/01/25 09:58:05ls /move/
+   47  21/01/25 10:03:07ls -a /move/
+   48  21/01/25 10:03:42touch gip
+   49  21/01/25 10:03:43ls
+   50  21/01/25 10:11:58ls ../move
+   51  21/01/25 10:12:06ls ../copy/
+   52  21/01/25 10:12:21cp ../move/file3.txt ../copy/
+   53  21/01/25 10:12:29history 
+   54  21/01/25 10:12:51ls /copy/
+   55  21/01/25 10:13:53history 
+   56  21/01/25 10:14:25ls /copy/
+   57  21/01/25 10:14:33touch gip
+   58  21/01/25 10:16:40export HISTTIMEFORMAT='%d/%m/%y %T'
+   59  21/01/25 10:16:50history 
+   60  21/01/25 10:17:28env
+   61  21/01/25 10:19:12history 
+   62  21/01/25 10:40:38head anaconda-ks.cfg 
+   63  21/01/25 10:41:53cat -n anaconda-ks.cfg 
+   64  21/01/25 10:42:27head -n 3 anaconda-ks.cfg 
+   65  21/01/25 10:42:33head -3 anaconda-ks.cfg 
+   66  21/01/25 10:42:45tail -5 anaconda-ks.cfg 
+   67  21/01/25 10:44:51ls
+   68  21/01/25 10:45:04gedit devops 
+   69  21/01/25 10:46:32vim devops 
+   70  21/01/25 10:50:56cat devops 
+   71  21/01/25 10:51:23vim devops 
+   72  21/01/25 10:56:54ls
+   73  21/01/25 10:57:03cat devops
+   74  21/01/25 10:57:08cat devops_tools 
+   75  21/01/25 10:57:28diff devops devops_tools 
+   76  21/01/25 10:57:37vim devops
+   77  21/01/25 10:57:52diff devops devops_tools 
+   78  21/01/25 11:00:50vim devops
+   79  21/01/25 11:35:22mv devops devops.txt
+   80  21/01/25 11:35:33grep devops devops.txt 
+   81  21/01/25 11:35:58grep DevOps devops.txt 
+   82  21/01/25 11:36:22grep -i devops devops.txt 
+   83  21/01/25 11:36:47grep -i devops devops.txt devops_tools 
+   84  21/01/25 11:37:19grep -in devops devops.txt devops_tools 
+   85  21/01/25 11:37:38grep -in dev devops.txt devops_tools 
+   86  21/01/25 11:37:46grep -inw dev devops.txt devops_tools 
+   87  21/01/25 11:38:26grep -inw jenkins devops.txt devops_tools 
+   88  21/01/25 11:38:44grep -inw jenkins ansible devops.txt devops_tools 
+   89  21/01/25 11:39:42grep -inw 'jenkin\|sansible' devops.txt devops_tools 
+   90  21/01/25 11:39:50grep -inw 'jenkins\|ansible' devops.txt devops_tools 
+   91  21/01/25 11:40:15grep -inw 'jenkins\|ansible\|Git' devops.txt devops_tools 
+   92  21/01/25 11:40:50vim /var/log/messages 
+   93  21/01/25 11:42:38grep -inwv 'jenkins\|ansible\|Git' devops.txt devops_tools 
+   94  21/01/25 11:45:02echo hello
+   95  21/01/25 11:46:05echo hello >/redirection
+   96  21/01/25 11:46:28ls /
+   97  21/01/25 11:46:34cat /redirection 
+   98  21/01/25 11:47:21cat 
+   99  21/01/25 11:48:10cat > /redirection 
+  100  21/01/25 11:48:53jobs
+  101  21/01/25 11:49:02kill -18 %1
+  102  21/01/25 11:49:05kill -19 %1
+  103  21/01/25 11:49:11kill -9 %21
+  104  21/01/25 11:49:15kill -9 %1
+  105  21/01/25 11:49:23cat /redirection 
+  106  21/01/25 11:49:44cat > /redirection 
+  107  21/01/25 11:50:25cat /redirection 
+  108  21/01/25 11:52:18head -3 devops.txt 
+  109  21/01/25 11:52:32head -3 devops.txt >>/redirection 
+  110  21/01/25 11:52:36cat /redirection 
+  111  21/01/25 11:52:56history >/history.txt
+  112  21/01/25 11:53:01vim /history.txt 
+  113  21/01/25 11:53:31ls
+  114  21/01/25 11:53:42mkdir gip
+  115  21/01/25 11:53:55mkdir gip >>/redirection 
+  116  21/01/25 11:54:23mkdir gip 2>>/redirection 
+  117  21/01/25 11:54:31cat /redirection 
+  118  21/01/25 11:55:34grep -inw jenkins ansible devops.txt devops_tools 
+  119  21/01/25 11:55:50grep -inw jenkins ansible devops.txt devops_tools >/redirection 
+  120  21/01/25 11:56:02grep -inw jenkins ansible devops.txt devops_tools 2>/redirection 
+  121  21/01/25 11:56:12grep -inw jenkins ansible devops.txt devops_tools &>/redirection 
+  122  21/01/25 11:58:40history >/basic_cmd_history
+mkdir -p /admin/tools;touch /admin/tools/file1.txt
+

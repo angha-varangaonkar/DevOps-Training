@@ -1,0 +1,35 @@
+LINK OF RECORDED SESSION 
+
+https://drive.google.com/drive/folders/1CY6TtLaltXC-kPJ32e9iFFlPh2p6r4yY?usp=drive_link : redcored videos awk sed command
+
+https://drive.google.com/drive/folders/1hDD2-_BbJ39oHsr-Qqa_GB4iLMGKQpyj?usp=drive_link : Process Management Recorded sessions.
+
+https://drive.google.com/drive/folders/1xcRbItrjKF5HfcGDfOlZ46ZMC88VPiy-?usp=drive_link : Networking videos.
+
+https://drive.google.com/drive/folders/1HU9Xrsu-MtxoyckFNtuVl9d637ecvN8U?usp=drive_link : selinux recored sessions
+
+https://drive.google.com/drive/folders/1imxbkvNhaS87gp5Gl9yYcI_3skgKPbv9?usp=drive_link : security related videos.
+
+https://drive.google.com/drive/folders/1va3sCY9-IB90-N1VDimHkGoSYasd4ZFj?usp=drive_link : lvm advance recorded sessions
+
+https://drive.google.com/drive/folders/19gFetScHsaE6Atq8yhoirsNt1AlFqOUx?usp=drive_link : log management recorded sessions
+
+
+LINK FOR MARIADB 
+https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/
+https://docs.redhat.com/fr/documentation/red_hat_enterprise_linux/9/html/configuring_and_using_database_servers/backing-up-mariadb-data_using-mariadb#performing-file-system-backup_backing-up-mariadb-data
+
+LINK FOR ROLES 
+https://github.com/sunilkumar0633/apache_role.git
+
+LINK OF MOBAXTROM 
+https://download.mobatek.net/2502024121622306/MobaXterm_Portable_v25.0.zip
+
+link of teraform 
+https://drive.google.com/drive/folders/1CrSBF-UihwBy7cOBe42n5w4t5ik6uamK?usp=drive_link already downloaded
+
+
+last project links 
+https://drive.google.com/file/d/1Je4DADyf7T2Rm6PaOZwwYFwyQ_mAU07g/view?usp=drive_link
+
+https://github.com/jacksneel/devproject.git

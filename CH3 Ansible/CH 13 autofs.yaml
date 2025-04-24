@@ -1,0 +1,33 @@
+---
+ - name: configure autofs
+   hosts: mh2
+   tasks:
+           - name: install autofs
+             yum:
+                  name:
+                        - autofs
+                        - nfs-utils
+                  state: present
+
+           - name: start/enable autofs
+             service:
+                  name: autofs.service
+                  state: started
+                  enabled: yes
+
+           - name: create custom conf file
+             lineinfile:
+                   path: /etc/auto.master.d/abc.autofs
+                   line: /-     /etc/auto.misc
+                   create: yes
+
+
+           - name: modify auto.misc file
+             lineinfile:
+                   path: /etc/auto.misc
+                   line: /mnt  -rw,intr,soft  172.31.15.207:/nfs_share
+
+           - name: restart autofs  service
+             service:
+                   name: autofs.service
+                   state: restarted

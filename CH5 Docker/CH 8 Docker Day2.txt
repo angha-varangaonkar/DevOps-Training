@@ -1,0 +1,35 @@
+    1  sudo dnf -y install dnf-plugins-core
+    2  sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+    3  sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+    4  systemctl enable --now docker
+    5  docker pull mysql
+    6  mkdir /mysql_data
+    7  docker container run -d  --name mysql -v /mysql_data:/var/lib/mysql --restart always -e MYSQL_ROOT_PASSWORD=redhat@00 mysql:latest
+    8  ls /mysql_data/
+    9  docker exec -it mysql bash
+   10  ls /mysql_data/
+   11  docker rm -f mysql
+   12  docker container run -d  --name mydb -v /mysql_data:/var/lib/mysql --restart always -e MYSQL_ROOT_PASSWORD=redhat@00 mysql:latest
+   13  docker exec -it mydb bash
+   14  ls /
+   15  docker volume ls
+   16  docker volume create wp_data
+   17  docker volume create db_data
+   18  docker rm -f mydb
+   19  docker volume ls
+   20  cd /var/lib/docker/volumes/
+   21  ls
+   22  ls db_data/
+   23  ls db_data/_data/
+   24  docker pull wordpress
+   25  docker container run -d --name wordpress --restart always -v wp_data:/var/www/html -p 80:80 wordpress:latest
+   26  docker container run -d  --name mysql -v db_data:/var/lib/mysql --restart always -e MYSQL_ROOT_PASSWORD=redhat@00 mysql:latest
+   27  docker container inspect wordpress
+   28  docker exec -it mysql bash
+   29  docker container inspect mysql
+   30  ls
+   31  ls wp_data/_data/
+   32  cd wp_data/_data/
+   33  cp wp-config-sample.php wp-config.php
+   34  vim wp-config.php
+   35  history

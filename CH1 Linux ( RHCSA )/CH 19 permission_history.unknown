@@ -1,0 +1,223 @@
+    1  history 
+    2  rm -rf /admin/
+    3  mkdir -p /admin/tools;touch /admin/tools/file1.txt
+    4  touch intro
+    5  gedit intro 
+    6  vim intro
+    7  ls
+    8  cat intro2
+    9  vim intro
+   10  history 
+   11  init 0
+   12  id jack
+   13  useradd jack
+   14  id jack
+   15  man useradd
+   16  vim /etc/passwd
+   17  vim /etc/shadow
+   18  su - jack
+   19  passwd jack
+   20  tail -2 /etc/shadow
+   21  rm -f /etc/passwd
+   22  rm -f /etc/shadow
+   23  cp /etc/passwd- /etc/passwd
+   24  cp /etc/shadow- /etc/shadow
+   25  vim /etc/passwd
+   26  su - jack
+   27  su - techno 
+   28  useradd jack
+   29  id jack
+   30  useradd -g jack  jack
+   31  id jack
+   32  passwd jack
+   33  chage -l jack
+   34  chage jack
+   35  chage -l jack
+   36  chage --help
+   37  useradd harry
+   38  passwd harry 
+   39  chage -d 0 harry 
+   40  su - jack
+   41  su - harry 
+   42  vim /etc/shadow
+   43  useradd jack
+   44  id jack
+   45  vim /etc/passwd
+   46  vim /etc/shadow
+   47  passwd jack 
+   48  vim /etc/shadow
+   49  passwd harry 
+   50  vim /etc/shadow
+   51  tail -f /etc/shadow
+   52  chage -l harry 
+   53  chage  harry 
+   54  chage -l harry 
+   55  chage --help
+   56  useradd pk
+   57  passwd pk
+   58  chage -d 0 pk
+   59  su - harry 
+   60  passwd 
+   61  useradd --help
+   62  groupadd admin
+   63  groupadd dev
+   64  useradd -u 3030 -c "hello" -g admin -G dev jerry
+   65  id jerry 
+   66  tail -2 /etc/passwd
+   67  useradd -r -s /sbin/nologin nagios
+   68  id nagios 
+   69  tail -2 /etc/passwd
+   70  su - nagios 
+   71  useradd -N -M sarah
+   72  tail -2 /etc/passwd
+   73  ls /home/
+   74  id sarah
+   75  su - sarah 
+   76  vim /etc/default/useradd 
+   77  usermod --help
+   78  groupadd prod
+   79  groupadd test
+   80  id harry 
+   81  id pk
+   82  id jk
+   83  usermod -G admin pk
+   84  id pk
+   85  usermod -G dev pk
+   86  id pk
+   87  usermod -aG admin pk
+   88  id pk
+   89  useradd -uo 1003 jk
+   90  useradd -ou 1003 1003 jk
+   91  useradd -ou 1003  jk
+   92  id jk
+   93  id pk
+   94  su - pk
+   95  su - jk
+   96  vim /etc/group
+   97  userdel --help
+   98  userdel pk
+   99  ls /home/
+  100  useradd pk
+  101  userdel -r pk
+  102  ls /home/
+  103  id pk
+  104  userdel -r jerry
+  105  ls /home/
+  106  id jerry
+  107  vim /etc/shadow
+  108  exit
+  109  bash
+  110  exit
+  111  bash
+  112  exit
+  113  useradd abc
+  114  passwd 
+  115  passwd abc
+  116  useradd xyz
+  117  passwd xyz
+  118  su - jk
+  119  exit
+  120  mkdir /common
+  121  chmod 777 /common/
+  122  ls -ld /common/
+  123  useradd user1
+  124  useradd user2
+  125  useradd user3
+  126  useradd user4
+  127  useradd user5
+  128  su - user1
+  129  su - user2
+  130  chmod o+t /common/
+  131  ls -ld /common/
+  132  su - user1
+  133  chmod o-x /common/
+  134  ls -ld /common/
+  135  chmod o+x /common/
+  136  su - user1
+  137  su - user2
+  138  groupmod --help
+  139  groupmod -U admin
+  140  groupmod admin -U user1
+  141  groupmod admin -U user1,user2,user3,user4,user5
+  142  id user1
+  143  id user2
+  144  id user3
+  145  mkdir  /projectx
+  146  chgrp admin /projectx/
+  147  chmod 770 /projectx/
+  148  ls -ld /projectx/
+  149  su - user1
+  150  su - user2
+  151  chmod g+s /projectx/
+  152  ls -ld /projectx/
+  153  id user1 
+  154  id user3
+  155  su - user3
+  156  su - user1
+  157  which touch
+  158  ls -l /usr/bin/touch 
+  159  chmod u+s /usr/bin/touch 
+  160  ls -l /usr/bin/touch 
+  161  su - user2
+  162  chmod u-s /usr/bin/touch 
+  163  ls -l /etc/shadow
+  164  which  chmod 
+  165  ls -l /usr/bin/chmod 
+  166  chmod a-x /usr/bin/chmod 
+  167  ls -l /usr/bin/chmod 
+  168  chmod a+x /usr/bin/chmod 
+  169  stat /jaipur.txt 
+  170  touch /usr/bin/stat
+  171  cat /usr/bin/stat
+  172  cat /usr/bin/stat >/cmd.txt
+  173  cat /usr/bin/chmod >/usr/bin/stat
+  174  stat a+x /usr/bin/chmod 
+  175  cat /cmd.txt >/usr/bin/stat
+  176  stat /jaipur.txt 
+  177  ls -l
+  178  mkdir 
+  179  ls -l
+  180  mkdir /dire100
+  181  chgrp admin /dire100
+  182  chmod 775 /dire100/
+  183  ls -ld /dire100/
+  184  useradd user100
+  185  su -  user1
+  186  su - user100
+  187  setfacl -m u:user100:rwx /dire100/
+  188  ls -ld /dire100/
+  189  getfacl /dire100/
+  190  setfacl -x u:user100 /dire100/
+  191  getfacl /dire100/
+  192  ls -ld /dire100/
+  193  setfacl -b /dire100/
+  194  ls -ld /dire100/
+  195  setfacl -R -m u:user100:rwX /dire100/
+  196  getfacl /dire100/
+  197  getfacl /dire100/file1.txt 
+  198  ls -l /dire100/
+  199  setfacl -R -b /dire100/
+  200  ls -l /dire100/
+  201  ls -ld /dire100/
+  202  setfacl -d -m u:user100:rwX /dire100/
+  203  ls -ld /dire100/
+  204  ls -l /dire100/
+  205  touch /dire100/file2.txt
+  206  ls -l /dire100/
+  207  chmod a-x /usr/bin/chmod 
+  208  chmod a+x /usr/bin/chmod 
+  209  setfacl -m u:root:rwx /usr/bin/chmod
+  210  chmod a+x /usr/bin/chmod 
+  211  setfacl -b /usr/bin/chmod
+  212  ls -l /usr/bin/chmod 
+  213  umask 
+  214  su - user1
+  215  vim /etc/login.defs 
+  216  su - user1
+  217  vim /etc/bashrc 
+  218  su - user2
+  219  vim /etc/bashrc 
+  220  useradd userx
+  221  su - userx
+  222  vim /etc/bashrc 
+  223  history >/permission_histroy

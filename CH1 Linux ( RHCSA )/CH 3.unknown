@@ -1,0 +1,123 @@
+    1  history 
+    2  rm -rf /admin/
+    3  mkdir -p /admin/tools;touch /admin/tools/file1.txt
+    4  touch intro
+    5  gedit intro 
+    6  vim intro
+    7  ls
+    8  cat intro2
+    9  vim intro
+   10  history 
+   11  init 0
+   12  ls
+   13  grep devops devops.txt 
+   14  grep -i devops devops.txt 
+   15  grep -i devops devops.txt devops_tools 
+   16  grep -in devops devops.txt devops_tools 
+   17  grep -inc devops devops.txt devops_tools 
+   18  grep -inc dev devops.txt devops_tools 
+   19  grep -inw dev devops.txt devops_tools 
+   20  grep -inv dev devops.txt devops_tools 
+   21  echo "xvxcvxcvxcvcvc"
+   22  cat 
+   23  cat >/redirection
+   24  ls /
+   25  cat /redirection 
+   26  head -5 devops.txt 
+   27  head -5 devops.txt >>/redirection 
+   28  cat /redirection 
+   29  history 
+   30  history >/redirection 
+   31  cat /redirection 
+   32  head -x 8 devops.txt 
+   33  head -x 8 devops.txt >/redirection 
+   34  head -x 8 devops.txt 2>/redirection 
+   35  cat /redirection 
+   36  grep root ftp /etc/passwd
+   37  grep root ftp /etc/passwd >/redirection 
+   38  grep root ftp /etc/passwd 2>/redirection 
+   39  grep root ftp /etc/passwd &>/redirection 
+   40  grep 'root\|ftp' /etc/passwd
+   41  grep -n 'root\|ftp' /etc/passwd
+   42  grep root ftp /etc/passwd >/redirection 
+   43  grep root ftp /etc/passwd >/redirection 2>/error
+   44  cat -n /etc/passwd
+   45  head -30 /etc/passwd | tail -6
+   46  ps -aux
+   47  ps -aux | grep systemd
+   48  ps -aux | grep systemd >/redirection 
+   49  lsattr /redirection 
+   50  man chattr 
+   51  chattr +a /redirection 
+   52  lsattr /redirection 
+   53  ps -aux | grep systemd >/redirection 
+   54  ps -aux | grep systemd >>/redirection 
+   55  chattr -a /redirection 
+   56  chattr +i /redirection 
+   57  ps -aux | grep systemd >>/redirection 
+   58  ps -aux | grep systemd >/redirection 
+   59  rm -f /redirection 
+   60  cat /redirection 
+   61  mv /redirection /redirection1
+   62  chmod 000 /redirection 
+   63  stat /redirection 
+   64  vim /redirection 
+   65  cp /redirectio /xyz
+   66  cp /redirection /xyz
+   67  cat /redirection~
+   68  ls -l /
+   69  history 
+   70  ls -li 
+   71  mkdir Desktop/abc
+   72  ls -li 
+   73  touch Desktop/abc
+   74  ls -li 
+   75  ln devops.txt /tmp/devops.conf
+   76  ls -li 
+   77  ls -li /tmp/devops.conf 
+   78  stat devops.txt 
+   79  ls -lih /tmp/devops.conf 
+   80  stat /
+   81  rm -f devops.txt 
+   82  cat /tmp/devops.conf 
+   83  ls
+   84  ln -s jaipur/ /tmp/udaipur
+   85  ls -l /
+   86  ls -li /tmp/
+   87  rm -f /tmp/udaipur 
+   88  ln -s ./jaipur/ /tmp/udaipur
+   89  ls -li /tmp/
+   90  rm -f /tmp/udaipur 
+   91  ln -s /root/jaipur/ /tmp/udaipur
+   92  ls -li /tmp/
+   93  ls -li /tmp/udaipur/
+   94  ls jaipur/
+   95  touch jaipur/jalmahal
+   96  ls -li /tmp/udaipur/
+   97  ls  /tmp/udaipur/
+   98  rm -f /tmp/udaipur/
+   99  rm -rf /tmp/udaipur/
+  100  ls jaipur/
+  101  ln -s /root/jaipur/ /tmp/udaipur
+  102  ls -l /tmp/
+  103  touch jaipur/jalmahal
+  104  ls jaipur/
+  105  ls /tmp/udaipur/
+  106  ls -l jaipur/
+  107  rm -rf jaipur/*
+  108  ls jaipur/
+  109  ls -l /tmp/
+  110  ls /tmp/ udaipur/
+  111  ls /tmp/udaipur/
+  112  touch jaipur/jalmahal
+  113  ls jaipur/
+  114  ls /tmp/udaipur/
+  115  rm -f /tmp/udaipur/
+  116  rm -f /tmp/udaipur
+  117  ls jaipur/
+  118  ls /
+  119  history 
+  120  mkdir  /india/rajasathan
+  121  mkdir -p  /india/rajasathan
+  122  mkdir -p  /india/rajasathan/jaipur;touch /india/rajasathan/jaipur/abc.txt
+  123  history >/hardlink_softlink_history 

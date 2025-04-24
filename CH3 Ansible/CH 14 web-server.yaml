@@ -1,0 +1,33 @@
+---
+ - name: configure web-server
+   hosts: dev
+   vars_files:
+             - ./web_vars.yaml
+   tasks:
+             - name: install {{ package }}
+               yum:
+                    name: "{{ package }}"
+                    state: present
+
+             - name: start/enable {{ service }}
+               service:
+                    name: "{{ service }}"
+                    state: started
+                    enabled: yes
+
+             - name: add {{ port }} to firewall
+               firewalld:
+                    port: "{{ port }}"
+                    state: enabled
+                    permanent: true
+                    immediate: true
+
+             - name: copy web-content
+               copy:
+                    src: ./index.html
+                    dest: /var/www/html
+
+             - name: restart {{ service }}
+               service:
+                    name: "{{ service }}"
+                    state: restarted

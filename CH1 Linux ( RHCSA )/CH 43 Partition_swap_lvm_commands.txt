@@ -1,0 +1,1001 @@
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# history -c
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0xa89eae16.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 
+First sector (2048-20971519, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-20971519, default 20971519): +2G
+
+Created a new partition 1 of type 'Linux' and of size 2 GiB.
+
+Command (m for help): p
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa89eae16
+
+Device     Boot Start     End Sectors Size Id Type
+/dev/sda1        2048 4196351 4194304   2G 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+└─sda1          8:1    0    2G  0 part 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkfs.
+mkfs.cramfs  mkfs.ext3    mkfs.fat     mkfs.msdos   mkfs.xfs
+mkfs.ext2    mkfs.ext4    mkfs.minix   mkfs.vfat    
+[root@localhost ~]# mkfs.vfat /dev/sda1
+mkfs.fat 4.2 (2021-01-31)
+[root@localhost ~]# 
+[root@localhost ~]# mkdir /data
+[root@localhost ~]# 
+[root@localhost ~]# mount /dev/sda1 /data
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+└─sda1          8:1    0    2G  0 part /data
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# umount /data
+[root@localhost ~]# 
+[root@localhost ~]# vim /etc/fstab 
+[root@localhost ~]# 
+[root@localhost ~]# mount -a
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+└─sda1          8:1    0    2G  0 part /data
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): e
+Partition number (2-4, default 2): 2
+First sector (4196352-20971519, default 4196352): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (4196352-20971519, default 20971519): +5G
+
+Created a new partition 2 of type 'Extended' and of size 5 GiB.
+
+Command (m for help): p
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa89eae16
+
+Device     Boot   Start      End  Sectors Size Id Type
+/dev/sda1          2048  4196351  4194304   2G 83 Linux
+/dev/sda2       4196352 14682111 10485760   5G  5 Extended
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+└─sda2          8:2    0    1K  0 part 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 1 extended, 2 free)
+   l   logical (numbered from 5)
+Select (default p): l
+
+Adding logical partition 5
+First sector (4198400-14682111, default 4198400): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (4198400-14682111, default 14682111): +1G
+
+Created a new partition 5 of type 'Linux' and of size 1 GiB.
+
+Command (m for help): p
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa89eae16
+
+Device     Boot   Start      End  Sectors Size Id Type
+/dev/sda1          2048  4196351  4194304   2G 83 Linux
+/dev/sda2       4196352 14682111 10485760   5G  5 Extended
+/dev/sda5       4198400  6295551  2097152   1G 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+├─sda2          8:2    0    1K  0 part 
+└─sda5          8:5    0    1G  0 part 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# fdisk -l /dev/sda
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa89eae16
+
+Device     Boot   Start      End  Sectors Size Id Type
+/dev/sda1          2048  4196351  4194304   2G 83 Linux
+/dev/sda2       4196352 14682111 10485760   5G  5 Extended
+/dev/sda5       4198400  6295551  2097152   1G 83 Linux
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+
+
+Command (m for help): d
+Partition number (1,2,5, default 5): 5
+
+Partition 5 has been deleted.
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+└─sda2          8:2    0    1K  0 part 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# free -h
+               total        used        free      shared  buff/cache   available
+Mem:           1.7Gi       1.1Gi        67Mi       9.0Mi       601Mi       501Mi
+Swap:          2.0Gi          0B       2.0Gi
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 1 extended, 2 free)
+   l   logical (numbered from 5)
+Select (default p): l
+
+Adding logical partition 5
+First sector (4198400-14682111, default 4198400): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (4198400-14682111, default 14682111): +2G
+
+Created a new partition 5 of type 'Linux' and of size 2 GiB.
+
+Command (m for help): t
+Partition number (1,2,5, default 5): 5
+Hex code or alias (type L to list all): l
+
+00 Empty            24 NEC DOS          81 Minix / old Lin  bf Solaris        
+01 FAT12            27 Hidden NTFS Win  82 Linux swap / So  c1 DRDOS/sec (FAT-
+02 XENIX root       39 Plan 9           83 Linux            c4 DRDOS/sec (FAT-
+03 XENIX usr        3c PartitionMagic   84 OS/2 hidden or   c6 DRDOS/sec (FAT-
+04 FAT16 <32M       40 Venix 80286      85 Linux extended   c7 Syrinx         
+05 Extended         41 PPC PReP Boot    86 NTFS volume set  da Non-FS data    
+06 FAT16            42 SFS              87 NTFS volume set  db CP/M / CTOS / .
+07 HPFS/NTFS/exFAT  4d QNX4.x           88 Linux plaintext  de Dell Utility   
+08 AIX              4e QNX4.x 2nd part  8e Linux LVM        df BootIt         
+09 AIX bootable     4f QNX4.x 3rd part  93 Amoeba           e1 DOS access     
+0a OS/2 Boot Manag  50 OnTrack DM       94 Amoeba BBT       e3 DOS R/O        
+0b W95 FAT32        51 OnTrack DM6 Aux  9f BSD/OS           e4 SpeedStor      
+0c W95 FAT32 (LBA)  52 CP/M             a0 IBM Thinkpad hi  ea Linux extended 
+0e W95 FAT16 (LBA)  53 OnTrack DM6 Aux  a5 FreeBSD          eb BeOS fs        
+0f W95 Ext'd (LBA)  54 OnTrackDM6       a6 OpenBSD          ee GPT            
+10 OPUS             55 EZ-Drive         a7 NeXTSTEP         ef EFI (FAT-12/16/
+11 Hidden FAT12     56 Golden Bow       a8 Darwin UFS       f0 Linux/PA-RISC b
+12 Compaq diagnost  5c Priam Edisk      a9 NetBSD           f1 SpeedStor      
+14 Hidden FAT16 <3  61 SpeedStor        ab Darwin boot      f4 SpeedStor      
+16 Hidden FAT16     63 GNU HURD or Sys  af HFS / HFS+       f2 DOS secondary  
+17 Hidden HPFS/NTF  64 Novell Netware   b7 BSDI fs          fb VMware VMFS    
+18 AST SmartSleep   65 Novell Netware   b8 BSDI swap        fc VMware VMKCORE 
+1b Hidden W95 FAT3  70 DiskSecure Mult  bb Boot Wizard hid  fd Linux raid auto
+1c Hidden W95 FAT3  75 PC/IX            bc Acronis FAT32 L  fe LANstep        
+1e Hidden W95 FAT1  80 Old Minix        be Solaris boot     ff BBT            
+
+Aliases:
+   linux          - 83
+   swap           - 82
+   extended       - 05
+   uefi           - EF
+   raid           - FD
+   lvm            - 8E
+   linuxex        - 85
+Hex code or alias (type L to list all): 82
+
+Changed type of partition 'Linux' to 'Linux swap / Solaris'.
+
+Command (m for help): p
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa89eae16
+
+Device     Boot   Start      End  Sectors Size Id Type
+/dev/sda1          2048  4196351  4194304   2G 83 Linux
+/dev/sda2       4196352 14682111 10485760   5G  5 Extended
+/dev/sda5       4198400  8392703  4194304   2G 82 Linux swap / Solaris
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+├─sda2          8:2    0    1K  0 part 
+└─sda5          8:5    0    2G  0 part 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# lsblk -f
+NAME FSTYPE FSVER LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sda                                                                           
+├─sda1
+│    vfat   FAT32       884F-14A5                                   2G     0% /data
+├─sda2
+│                                                                             
+└─sda5
+                                                                              
+sr0                                                                           
+nvme0n1
+│                                                                             
+├─nvme0n1p1
+│    vfat   FAT32       2050-F026                               591.8M     1% /boot/efi
+├─nvme0n1p2
+│    xfs                e8830e4f-08da-446b-8bd1-0883b5d8aff0    760.5M    25% /boot
+└─nvme0n1p3
+     LVM2_m LVM2        LhN0My-m0Wq-sVlI-w5V8-HknL-ijDA-wNzn6O                
+  ├─rhel-root
+  │  xfs                1012cb4c-3324-4d28-83ae-4aa4ce694091     12.5G    24% /
+  └─rhel-swap
+     swap   1           a095bdb8-a9e3-4ceb-8a02-a55d47f36a3a                  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# mkswap /dev/sda5
+Setting up swapspace version 1, size = 2 GiB (2147479552 bytes)
+no label, UUID=f2786e16-2704-4d0b-b789-d6072e6f1330
+[root@localhost ~]# 
+[root@localhost ~]# lsblk -f
+NAME FSTYPE FSVER LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sda                                                                           
+├─sda1
+│    vfat   FAT32       884F-14A5                                   2G     0% /data
+├─sda2
+│                                                                             
+└─sda5
+     swap   1           f2786e16-2704-4d0b-b789-d6072e6f1330                  
+sr0                                                                           
+nvme0n1
+│                                                                             
+├─nvme0n1p1
+│    vfat   FAT32       2050-F026                               591.8M     1% /boot/efi
+├─nvme0n1p2
+│    xfs                e8830e4f-08da-446b-8bd1-0883b5d8aff0    760.5M    25% /boot
+└─nvme0n1p3
+     LVM2_m LVM2        LhN0My-m0Wq-sVlI-w5V8-HknL-ijDA-wNzn6O                
+  ├─rhel-root
+  │  xfs                1012cb4c-3324-4d28-83ae-4aa4ce694091     12.5G    24% /
+  └─rhel-swap
+     swap   1           a095bdb8-a9e3-4ceb-8a02-a55d47f36a3a                  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# vim /etc/fstab 
+[root@localhost ~]# 
+[root@localhost ~]# swapon -a
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+├─sda2          8:2    0    1K  0 part 
+└─sda5          8:5    0    2G  0 part [SWAP]
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# free -h
+               total        used        free      shared  buff/cache   available
+Mem:           1.7Gi       1.0Gi        85Mi       9.0Mi       598Mi       516Mi
+Swap:          4.0Gi       0.0Ki       4.0Gi
+[root@localhost ~]# mount
+[root@localhost ~]# mount
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime,seclabel)
+devtmpfs on /dev type devtmpfs (rw,nosuid,seclabel,size=864028k,nr_inodes=216007,mode=755,inode64)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,seclabel,inode64)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,seclabel,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,seclabel,size=358020k,nr_inodes=819200,mode=755,inode64)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,seclabel,nsdelegate,memory_recursiveprot)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime,seclabel)
+efivarfs on /sys/firmware/efi/efivars type efivarfs (rw,nosuid,nodev,noexec,relatime)
+none on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+/dev/mapper/rhel-root on / type xfs (rw,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,nosuid,noexec,relatime)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=31,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=20599)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime,seclabel)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,seclabel,pagesize=2M)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime,seclabel)
+tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime,seclabel)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+configfs on /sys/kernel/config type configfs (rw,nosuid,nodev,noexec,relatime)
+vmware-vmblock on /run/vmblock-fuse type fuse.vmware-vmblock (rw,relatime,user_id=0,group_id=0,default_permissions,allow_other)
+/dev/nvme0n1p2 on /boot type xfs (rw,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/nvme0n1p1 on /boot/efi type vfat (rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro)
+sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw,relatime)
+tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,seclabel,size=179008k,nr_inodes=44752,mode=700,inode64)
+gvfsd-fuse on /run/user/0/gvfs type fuse.gvfsd-fuse (rw,nosuid,nodev,relatime,user_id=0,group_id=0)
+/dev/sda1 on /data type vfat (rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro)
+[root@localhost ~]# mount | grep sda5
+[root@localhost ~]# mount | grep sda1
+/dev/sda1 on /data type vfat (rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro)
+[root@localhost ~]# cat /proc/sys/vm/swappiness
+60
+[root@localhost ~]# sysctl vm.swappiness=70 
+vm.swappiness = 70
+[root@localhost ~]# cat /proc/sys/vm/swappiness
+70
+[root@localhost ~]# vim /etc/sysctl.conf  
+[root@localhost ~]# 
+[root@localhost ~]# cat /proc/vm
+vmallocinfo  vmstat       
+[root@localhost ~]# cat /proc/sys/vm/s
+stat_interval  stat_refresh   swappiness     
+[root@localhost ~]# cat /proc/sys/vm/s
+stat_interval  stat_refresh   swappiness     
+[root@localhost ~]# cat /proc/sys/vm/swappiness 
+70
+[root@localhost ~]# sysctl vm.swappiness=80
+vm.swappiness = 80
+[root@localhost ~]# 
+[root@localhost ~]# cat /proc/sys/vm/swappiness 
+80
+[root@localhost ~]# vim /etc/sysctl.conf  
+[root@localhost ~]# sysctl -p
+vm.swappiness = 75
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+├─sda2          8:2    0    1K  0 part 
+└─sda5          8:5    0    2G  0 part [SWAP]
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# vim /etc/fstab 
+[root@localhost ~]# swapoff /dev/sda5
+[root@localhost ~]# 
+[root@localhost ~]# fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+
+
+Command (m for help): d
+Partition number (1,2,5, default 5): 5
+
+Partition 5 has been deleted.
+
+Command (m for help): d
+Partition number (1,2, default 2): 2
+
+Partition 2 has been deleted.
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+└─sda1          8:1    0    2G  0 part /data
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+└─sda1          8:1    0    2G  0 part /data
+sdb             8:16   0    5G  0 disk 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 2
+First sector (4196352-20971519, default 4196352): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (4196352-20971519, default 20971519): +3G
+
+Created a new partition 2 of type 'Linux' and of size 3 GiB.
+
+Command (m for help): t
+Partition number (1,2, default 2): 2
+Hex code or alias (type L to list all): l
+
+00 Empty            24 NEC DOS          81 Minix / old Lin  bf Solaris        
+01 FAT12            27 Hidden NTFS Win  82 Linux swap / So  c1 DRDOS/sec (FAT-
+02 XENIX root       39 Plan 9           83 Linux            c4 DRDOS/sec (FAT-
+03 XENIX usr        3c PartitionMagic   84 OS/2 hidden or   c6 DRDOS/sec (FAT-
+04 FAT16 <32M       40 Venix 80286      85 Linux extended   c7 Syrinx         
+05 Extended         41 PPC PReP Boot    86 NTFS volume set  da Non-FS data    
+06 FAT16            42 SFS              87 NTFS volume set  db CP/M / CTOS / .
+07 HPFS/NTFS/exFAT  4d QNX4.x           88 Linux plaintext  de Dell Utility   
+08 AIX              4e QNX4.x 2nd part  8e Linux LVM        df BootIt         
+09 AIX bootable     4f QNX4.x 3rd part  93 Amoeba           e1 DOS access     
+0a OS/2 Boot Manag  50 OnTrack DM       94 Amoeba BBT       e3 DOS R/O        
+0b W95 FAT32        51 OnTrack DM6 Aux  9f BSD/OS           e4 SpeedStor      
+0c W95 FAT32 (LBA)  52 CP/M             a0 IBM Thinkpad hi  ea Linux extended 
+0e W95 FAT16 (LBA)  53 OnTrack DM6 Aux  a5 FreeBSD          eb BeOS fs        
+0f W95 Ext'd (LBA)  54 OnTrackDM6       a6 OpenBSD          ee GPT            
+10 OPUS             55 EZ-Drive         a7 NeXTSTEP         ef EFI (FAT-12/16/
+11 Hidden FAT12     56 Golden Bow       a8 Darwin UFS       f0 Linux/PA-RISC b
+12 Compaq diagnost  5c Priam Edisk      a9 NetBSD           f1 SpeedStor      
+14 Hidden FAT16 <3  61 SpeedStor        ab Darwin boot      f4 SpeedStor      
+16 Hidden FAT16     63 GNU HURD or Sys  af HFS / HFS+       f2 DOS secondary  
+17 Hidden HPFS/NTF  64 Novell Netware   b7 BSDI fs          fb VMware VMFS    
+18 AST SmartSleep   65 Novell Netware   b8 BSDI swap        fc VMware VMKCORE 
+1b Hidden W95 FAT3  70 DiskSecure Mult  bb Boot Wizard hid  fd Linux raid auto
+1c Hidden W95 FAT3  75 PC/IX            bc Acronis FAT32 L  fe LANstep        
+1e Hidden W95 FAT1  80 Old Minix        be Solaris boot     ff BBT            
+
+Aliases:
+   linux          - 83
+   swap           - 82
+   extended       - 05
+   uefi           - EF
+   raid           - FD
+   lvm            - 8E
+   linuxex        - 85
+Hex code or alias (type L to list all): 8e
+
+Changed type of partition 'Linux' to 'Linux LVM'.
+
+Command (m for help): p
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa89eae16
+
+Device     Boot   Start      End Sectors Size Id Type
+/dev/sda1          2048  4196351 4194304   2G 83 Linux
+/dev/sda2       4196352 10487807 6291456   3G 8e Linux LVM
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+[root@localhost ~]# 
+[root@localhost ~]# fdisk /dev/sdb
+
+Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x0140643f.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 
+First sector (2048-10485759, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-10485759, default 10485759): 
+
+Created a new partition 1 of type 'Linux' and of size 5 GiB.
+
+Command (m for help): p
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x0140643f
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/sdb1        2048 10485759 10483712   5G 83 Linux
+
+Command (m for help): t
+Selected partition 1
+Hex code or alias (type L to list all): 8e
+Changed type of partition 'Linux' to 'Linux LVM'.
+
+Command (m for help): p
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x0140643f
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/sdb1        2048 10485759 10483712   5G 8e Linux LVM
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+└─sda2          8:2    0    3G  0 part 
+sdb             8:16   0    5G  0 disk 
+└─sdb1          8:17   0    5G  0 part 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# pvcreate /dev/sda2
+WARNING: dos signature detected on /dev/sda2 at offset 510. Wipe it? [y/n]: 
+  WARNING: Invalid input ''.
+WARNING: dos signature detected on /dev/sda2 at offset 510. Wipe it? [y/n]: Y
+  WARNING: Invalid input ''.
+WARNING: dos signature detected on /dev/sda2 at offset 510. Wipe it? [y/n]: y
+  Wiping dos signature on /dev/sda2.
+  Physical volume "/dev/sda2" successfully created.
+[root@localhost ~]# 
+[root@localhost ~]# pvcreate /dev/sdb1
+  Physical volume "/dev/sdb1" successfully created.
+[root@localhost ~]# 
+[root@localhost ~]# pvdisplay 
+  --- Physical volume ---
+  PV Name               /dev/nvme0n1p3
+  VG Name               rhel
+  PV Size               18.41 GiB / not usable 2.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              4713
+  Free PE               0
+  Allocated PE          4713
+  PV UUID               LhN0My-m0Wq-sVlI-w5V8-HknL-ijDA-wNzn6O
+   
+  "/dev/sda2" is a new physical volume of "3.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               
+  PV Size               3.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               2jl5Qk-VuGG-h8Wo-zShJ-A9Ef-RIWW-PAudbG
+   
+  "/dev/sdb1" is a new physical volume of "<5.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sdb1
+  VG Name               
+  PV Size               <5.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               1zVjXm-BcrB-C2Wv-6t3Z-DV2Q-0aSr-6zEriU
+   
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# vgcreate 
+  No command with matching syntax recognised.  Run 'vgcreate --help' for more information.
+  Correct command syntax is:
+  vgcreate VG_new PV ...
+
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# vgcreate -s 8M  techno  /dev/sda2 /dev/sdb1
+  Volume group "techno" successfully created
+[root@localhost ~]# vgdisplay 
+  --- Volume group ---
+  VG Name               rhel
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  3
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               18.41 GiB
+  PE Size               4.00 MiB
+  Total PE              4713
+  Alloc PE / Size       4713 / 18.41 GiB
+  Free  PE / Size       0 / 0   
+  VG UUID               KS2QKA-sQTN-NZIC-Ic7i-cCIO-kwdz-7rwC7d
+   
+  --- Volume group ---
+  VG Name               techno
+  System ID             
+  Format                lvm2
+  Metadata Areas        2
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                2
+  Act PV                2
+  VG Size               7.98 GiB
+  PE Size               8.00 MiB
+  Total PE              1022
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       1022 / 7.98 GiB
+  VG UUID               8i1SMa-FvdI-0fP7-lwEA-ADND-ZTb5-c9gvLK
+   
+[root@localhost ~]# pvdisplay 
+  --- Physical volume ---
+  PV Name               /dev/nvme0n1p3
+  VG Name               rhel
+  PV Size               18.41 GiB / not usable 2.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              4713
+  Free PE               0
+  Allocated PE          4713
+  PV UUID               LhN0My-m0Wq-sVlI-w5V8-HknL-ijDA-wNzn6O
+   
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               techno
+  PV Size               3.00 GiB / not usable 8.00 MiB
+  Allocatable           yes 
+  PE Size               8.00 MiB
+  Total PE              383
+  Free PE               383
+  Allocated PE          0
+  PV UUID               2jl5Qk-VuGG-h8Wo-zShJ-A9Ef-RIWW-PAudbG
+   
+  --- Physical volume ---
+  PV Name               /dev/sdb1
+  VG Name               techno
+  PV Size               <5.00 GiB / not usable 7.00 MiB
+  Allocatable           yes 
+  PE Size               8.00 MiB
+  Total PE              639
+  Free PE               639
+  Allocated PE          0
+  PV UUID               1zVjXm-BcrB-C2Wv-6t3Z-DV2Q-0aSr-6zEriU
+   
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lvcreate -L +2G  -n cs  techno 
+WARNING: swap signature detected on /dev/techno/cs at offset 4086. Wipe it? [y/n]: y
+  Wiping swap signature on /dev/techno/cs.
+  Logical volume "cs" created.
+[root@localhost ~]# lvdisplay 
+  --- Logical volume ---
+  LV Path                /dev/rhel/swap
+  LV Name                swap
+  VG Name                rhel
+  LV UUID                J6Ismu-kLJ4-kybA-ZLr0-c7je-uTK8-XBuimV
+  LV Write Access        read/write
+  LV Creation host, time localhost.localdomain, 2024-06-13 18:50:04 +0530
+  LV Status              available
+  # open                 2
+  LV Size                2.00 GiB
+  Current LE             512
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:1
+   
+  --- Logical volume ---
+  LV Path                /dev/rhel/root
+  LV Name                root
+  VG Name                rhel
+  LV UUID                6ycbQW-K5mJ-eS8B-gw9D-ZXox-SCn2-2i5Oc0
+  LV Write Access        read/write
+  LV Creation host, time localhost.localdomain, 2024-06-13 18:50:04 +0530
+  LV Status              available
+  # open                 1
+  LV Size                16.41 GiB
+  Current LE             4201
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:0
+   
+  --- Logical volume ---
+  LV Path                /dev/techno/cs
+  LV Name                cs
+  VG Name                techno
+  LV UUID                z1sG2F-iP2Q-PzGk-mKuq-Cpt0-CHwr-Li9mQk
+  LV Write Access        read/write
+  LV Creation host, time localhost.localdomain, 2025-02-10 11:23:29 +0530
+  LV Status              available
+  # open                 0
+  LV Size                2.00 GiB
+  Current LE             256
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:2
+   
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+└─sda2          8:2    0    3G  0 part 
+  └─techno-cs 253:2    0    2G  0 lvm  
+sdb             8:16   0    5G  0 disk 
+└─sdb1          8:17   0    5G  0 part 
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkfs.ext4
+[root@localhost ~]# mkfs.ext4 /dev/techno/cs 
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 524288 4k blocks and 131072 inodes
+Filesystem UUID: 1913af22-bc9f-43e7-926b-d5aa92b75301
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done 
+
+[root@localhost ~]# mkdir /mydata
+[root@localhost ~]# 
+[root@localhost ~]# mount /dev/techno/cs /mydata/
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lvextend -L +1G /dev/techno/cs 
+  Size of logical volume techno/cs changed from 2.00 GiB (256 extents) to 3.00 GiB (384 extents).
+  Logical volume techno/cs successfully resized.
+[root@localhost ~]# 
+[root@localhost ~]# resize2fs /dev/techno/cs 
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/techno/cs is mounted on /mydata; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/techno/cs is now 786432 (4k) blocks long.
+
+[root@localhost ~]# 
+[root@localhost ~]# xfs_growfs /dev/techno/cs <-- if lv have xfs fs
+bash: --: No such file or directory
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lvresize -L 4G /dev/techno/cs -r
+  Size of logical volume techno/cs changed from 3.00 GiB (384 extents) to 4.00 GiB (512 extents).
+  File system ext4 found on techno/cs mounted at /mydata.
+  Extending file system ext4 to 4.00 GiB (4294967296 bytes) on techno/cs...
+resize2fs /dev/techno/cs
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/techno/cs is mounted on /mydata; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/techno/cs is now 1048576 (4k) blocks long.
+
+resize2fs done
+  Extended file system ext4 on techno/cs.
+  Logical volume techno/cs successfully resized.
+[root@localhost ~]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda             8:0    0   10G  0 disk 
+├─sda1          8:1    0    2G  0 part /data
+└─sda2          8:2    0    3G  0 part 
+  └─techno-cs 253:2    0    4G  0 lvm  /mydata
+sdb             8:16   0    5G  0 disk 
+└─sdb1          8:17   0    5G  0 part 
+  └─techno-cs 253:2    0    4G  0 lvm  /mydata
+sr0            11:0    1 1024M  0 rom  
+nvme0n1       259:0    0   20G  0 disk 
+├─nvme0n1p1   259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2   259:2    0    1G  0 part /boot
+└─nvme0n1p3   259:3    0 18.4G  0 part 
+  ├─rhel-root 253:0    0 16.4G  0 lvm  /
+  └─rhel-swap 253:1    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# 
+[root@localhost ~]# lvre
+lvreduce  lvremove  lvrename  lvresize  
+[root@localhost ~]# lvre
+lvreduce  lvremove  lvrename  lvresize 

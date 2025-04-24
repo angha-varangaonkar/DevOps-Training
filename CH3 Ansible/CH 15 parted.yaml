@@ -1,0 +1,46 @@
+---
+ - name: cretae lvm type partition
+   hosts: dev
+   tasks:
+            - name: create 2.9GB partition
+              parted:
+                    device: /dev/xvdb
+                    number: 1
+                    state: present
+                    part_end: 2GiB
+              when: ansible_devices.xvdb.size>='2.5g'
+
+            - name: print a msg required size is not vailable
+              debug:
+                    msg: required size is not avialable
+              when: ansible_devices.xvdb.size<='2.5g'
+
+            - name: print a msg device is not avilable
+              debug:
+                    msg: device is not avilable
+              when: ansible_devices.xvdb is not defined
+
+            - name: create 2.9GB partition
+              parted:
+                    device: /dev/xvdb
+                    number: 1
+                    state: present
+                    part_end: 1GiB
+              when: ansible_devices.xvdb.size<='2.5g'
+
+            - name: format partition with ext4
+              filesystem:
+                     fstype: ext4
+                     dev: /dev/xvdb1
+
+            - name: crate mount point
+              file:
+                    path: /mount_point
+                    state: directory
+
+            - name: mount partiton
+              mount:
+                    path: /mount_point
+                    src: /dev/xvdb1
+                    fstype: ext4
+                    state: present

@@ -1,0 +1,100 @@
+  168  passwd
+  169  touch /.autorelabel
+  170  exir
+  171  exit
+  172  ls -l
+  173  ls -l /
+  174  find / -name jaipur
+  175  find / -name jaipur -type d
+  176  find / -name jaipur -type f
+  177  mkdir Jaipur
+  178  find / -name jaipur -type f
+  179  find / -name jaipur -type d
+  180  find / -iname jaipur -type d
+  181  ls -li /
+  182  find / -inum 18276599
+  183  find / -user user1
+  184  find / -user user1 2>/dev/null
+  185  ls -l /techno/file1.txt
+  186  du -h /etc
+  187  du -sh /etc
+  188  du -h /var/log/messages
+  189  find / -size 10M
+  190  du -h /usr/share/fonts/google-noto-emoji/NotoColorEmoji.ttf
+  191  find / -size -10M
+  192  find / -size +10M -size -30M
+  193  du -h /usr/lib64/libicudata.so.67.1
+  194  find / -size +10M -size -30M | grep etc
+  195  du -h /etc/udev/hwdb.bin
+  196  ls -ldh /etc
+  197  find / -size +10M -size -30M -d
+  198  find / -size +10M -size -30M -type d
+  199  find / -perm 000
+  200  find / -perm 777
+  201  ls -ld /usr/tmp
+  202  find / -perm 777 -type f
+  203  find / -perm t
+  204  find / -perm rwt
+  205  find / -perm 1777
+  206  find / -perm o=t
+  207  find / -perm /o=t
+  208  ls -ld /var/tmp/systemd-private-4aedf6635f12439bac8cefdefa008dab-upower.service-0nTUEm/tmp
+  209  find / -perm /g=s
+  210  ls -ld /usr/sbin/lockdev
+  211  find / -perm /u=s
+  212  mkdir find
+  213  find / -user user1 -exec cp -arvf {} /root/find \; 2>/dev/null
+  214  ls -l find/
+  215  find / -group admin
+  216  ls -ld /dire100/
+  217  find / -group admin -exec chgrp {} dev \;
+  218  find / -group admin -exec chgrp  dev {} \;
+  219  ls -ld /dire100/
+  220  rpm -q chrony
+  221  systemctl status chronyd.service 
+  222  vim /etc/chrony.conf 
+  223  systemctl reload chronyd.service
+  224  find / -name chronyd.service
+  225  vim /usr/lib/systemd/system/chronyd.service
+  226  systemctl restart chronyd.service 
+  227  timedatectl 
+  228  timedatectl set-timezone Asia/Kolkata 
+  229  chronyc sources -v
+  230  vim /etc/chrony.conf 
+  231  echo "date >>./date.txt" | at now +2min
+  232  atq
+  233  ls 
+  234  rpm -q cronie
+  235  systemctl status crond.service 
+  236  vim /etc/crontab 
+  237  ls
+  238  vim /etc/crontab 
+  239  $PATH
+  240  vim /etc/crontab 
+  241  ls -l /etc/crontab 
+  242  crontab -e
+  243  id ram
+  244  watch -n 1 id rama
+  245  id rama
+  246  crontab -e
+  247  watch -n 1 id rama
+  248  id rama
+  249  crontab -e
+  250  crontab -l
+  251  crontab -e
+  252  watch -n 1 id rama
+  253  crontab -eu rama
+  254  which touch
+  255  which useradd 
+  256  crontab -lu rama
+  257  ls /
+  258  ls /rama.txt
+  259  crontab -lu rama
+  260  crontab -eu rama
+  261  ls /home/rama/
+  262  vim /etc/cron.deny 
+  263  su - rama
+  264  history 
+  265  history | tail -110
+  266  history | tail -100
+  267  history | tail -100 >/find_cronjob_history

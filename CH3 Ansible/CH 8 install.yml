@@ -1,0 +1,8 @@
+---
+ - name: install & uninstall packages
+   hosts: dev
+   tasks:
+           - name: uninstall git
+             yum:
+                  name: git
+                  state: absent

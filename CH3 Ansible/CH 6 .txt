@@ -1,0 +1,107 @@
+   5  cd ansible/
+    6  exit
+    7  ssh  student@mh1
+    8  ssh  student@mh2
+    9  ssh  student@mh1
+   10  cd ansible/
+   11  vim ansible.cfg
+   12  pwd
+   13  vim ansible.cfg
+   14  cd ansible/
+   15  ls
+   16  rm -f .ansible.cfg.swp
+   17  vim ansible.cfg
+   18  vim inventory
+   19  ansible -m ping all
+   20  ansible -m ping all --ask-pass
+   21  cat ansible.cfg
+   22  cd ansible/
+   23  ls
+   24  vim ansible.cfg
+   25  vim inventory
+   26  ansible -m ping all
+   27  ansible -m ping all --ask-pass
+   28  vim ansible.cfg
+   29  ansible -m ping all
+   30  vim inventory
+   31  ansible dev -i inventory --list-hosts
+   32  vim inventory
+   33  ansible prod -i inventory --list-hosts
+   34  vim inventory
+   35  ansible test -i inventory --list-hosts
+   36  ansible all -i inventory --list-hosts
+   37  ansible ungrouped -i inventory --list-hosts
+   38  vim inventory
+   39  ansible ungrouped -i inventory --list-hosts
+   40  vim inventory
+   41  kill -9 %1
+   42  history
+   43  cat ansible.cfg
+   44  vim inventory
+   45  touch test.cfg
+   46  ansible -m copy -a "src ./test.cfg  /tmp" dev
+   47  ansible -m copy -a "src=./test.cfg dest=/tmp" dev
+   48  ansible -m command -a "ls -l /tmp/test.cfg" dev
+   49  cat /etc/passwd
+   50  cat /etc/passwd > test.cfg
+   51  ansible -m copy -a "src=./test.cfg dest=/tmp" dev
+   52  ansible -m command -a "cat /tmp/test.cfg | grep root" dev
+   53  ansible -m shell -a "cat /tmp/test.cfg | grep root" dev
+   54  ansible -m command -a "cat /etc/os-release" dev
+   55  ansible -m yum -a "name=net-tools state=present" dev
+   56  vim ansible.cfg
+   57  ansible -m yum -a "name=net-tools state=present" dev
+   58  vim ansible.cfg
+   59  ansible -m yum -a "name=net-tools state=present" dev
+   60  ansible -m yum -a "name=net-tools state=present" dev -K
+   61  ansible -m yum -a "name=net-tools state=present" dev -b
+   62  ansible -m yum -a "name=net-tools state=present" dev -b -K
+   63  vim ansible.cfg
+   64  ansible -m user -a "name=john uid=1999" dev
+   65  vim ansible.cfg
+   66  ansible -m user -a "name=john uid=1999" dev
+   67  vim ansible.cfg
+   68  ssh-keygen
+   69  ssh-copy-id mh1
+   70  ssh-copy-id mh2
+   71  ansible -m user -a "name=john uid=1998" dev
+   72  vim ansible.cfg
+   73  ansible -m user -a "name=john uid=1998" dev
+   74  history
+   75  history >/ansible_day2_histroy
+   76  exit
+   77  history
+   78  history >ansible_day2_histroy
+   79  vim ansible
+   80  cd ansible/
+   81  vim ansible.cfg
+   82  ls
+   83  ansible -m file -a "path=/tmp/example.txt state=touch" dev
+   84  vim first.yml
+   85  ansible-playbook first.yml --syntax-check
+   86  vim first.yml
+   87  ansible-playbook first.yml --syntax-check
+   88  ansible-playbook first.yml --dry-run
+   89  ansible-playbook first.yml --check
+   90  ansible-playbook first.yml
+   91  vim first.yml
+   92  ansible-playbook first.yml --syntax-check
+   93  touch abc.txt
+   94  ansible-playbook abc.txt
+   95  ansible-playbook first.yml
+   96  ansible -m command -a "id jack" dev
+   97  ansible -m command -a "ls -l /home/jack" dev
+   98  ansible-playbook first.yml
+   99  vim first.yml
+  100  vim task1.yml
+  101  vim first.yml
+  102  ansible-playbook first.yml
+  103  ansible -m command -a "rpm -q git" dev
+  104  vim install.yml
+  105  vim first.yml
+  106  ansible-playbook first.yml
+  107  cat first.yml
+  108  ls
+  109  cat task1.yml
+  110  cat install.yml
+  111  history

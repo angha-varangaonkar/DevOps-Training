@@ -1,0 +1,39 @@
+  1  vim /etc/yum.repos.d/techno.repo
+    2  ifconfig 
+    3  yum install -y nfs-utils
+    4  mkdir  /nfs_data
+    5  mount -t nfs 192.168.172.132:/nfs_share /nfs_data/
+    6  df -h
+    7  cd /nfs_data/
+    8  ls
+    9  cd
+   10  ls
+   11  cd /nfs_data/
+   12  ls
+   13  touch client.txt
+   14  useradd bob
+   15  su - bob
+   16  useradd -u 1122 jerry
+   17  su - jerry
+   18  umount /nfs_data 
+   19  cd
+   20  umount /nfs_data 
+   21  vim /etc/fstab 
+   22  mount -a
+   23  df -h
+   24  lsblk
+   25  df -h
+   26  vim /etc/fstab 
+   27  umount /nfs_data 
+   28  df -h
+   29  yum install -y autofs
+   30  systemctl enable --now autofs
+   31  vim /etc/auto.master
+   32  vim /etc/auto.master.d/techno.autofs
+   33  vim /etc/auto.misc
+   34  systemctl restart autofs
+   35  df -h
+   36  cd /nfs_data/
+   37  df -h
+   38  cd
+   39  history >/nfs_client_history

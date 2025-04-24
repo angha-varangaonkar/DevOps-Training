@@ -1,0 +1,227 @@
+    1  history 
+    2  rm -rf /admin/
+    3  mkdir -p /admin/tools;touch /admin/tools/file1.txt
+    4  touch intro
+    5  gedit intro 
+    6  vim intro
+    7  ls
+    8  cat intro2
+    9  vim intro
+   10  history 
+   11  init 0
+   12  id jack
+   13  useradd jack
+   14  id jack
+   15  man useradd
+   16  vim /etc/passwd
+   17  vim /etc/shadow
+   18  su - jack
+   19  passwd jack
+   20  tail -2 /etc/shadow
+   21  rm -f /etc/passwd
+   22  rm -f /etc/shadow
+   23  cp /etc/passwd- /etc/passwd
+   24  cp /etc/shadow- /etc/shadow
+   25  vim /etc/passwd
+   26  su - jack
+   27  su - techno 
+   28  useradd jack
+   29  id jack
+   30  useradd -g jack  jack
+   31  id jack
+   32  passwd jack
+   33  chage -l jack
+   34  chage jack
+   35  chage -l jack
+   36  chage --help
+   37  useradd harry
+   38  passwd harry 
+   39  chage -d 0 harry 
+   40  su - jack
+   41  su - harry 
+   42  vim /etc/shadow
+   43  useradd jack
+   44  id jack
+   45  vim /etc/passwd
+   46  vim /etc/shadow
+   47  passwd jack 
+   48  vim /etc/shadow
+   49  passwd harry 
+   50  vim /etc/shadow
+   51  tail -f /etc/shadow
+   52  chage -l harry 
+   53  chage  harry 
+   54  chage -l harry 
+   55  chage --help
+   56  useradd pk
+   57  passwd pk
+   58  chage -d 0 pk
+   59  su - harry 
+   60  passwd 
+   61  useradd --help
+   62  groupadd admin
+   63  groupadd dev
+   64  useradd -u 3030 -c "hello" -g admin -G dev jerry
+   65  id jerry 
+   66  tail -2 /etc/passwd
+   67  useradd -r -s /sbin/nologin nagios
+   68  id nagios 
+   69  tail -2 /etc/passwd
+   70  su - nagios 
+   71  useradd -N -M sarah
+   72  tail -2 /etc/passwd
+   73  ls /home/
+   74  id sarah
+   75  su - sarah 
+   76  vim /etc/default/useradd 
+   77  usermod --help
+   78  groupadd prod
+   79  groupadd test
+   80  id harry 
+   81  id pk
+   82  id jk
+   83  usermod -G admin pk
+   84  id pk
+   85  usermod -G dev pk
+   86  id pk
+   87  usermod -aG admin pk
+   88  id pk
+   89  useradd -uo 1003 jk
+   90  useradd -ou 1003 1003 jk
+   91  useradd -ou 1003  jk
+   92  id jk
+   93  id pk
+   94  su - pk
+   95  su - jk
+   96  vim /etc/group
+   97  userdel --help
+   98  userdel pk
+   99  ls /home/
+  100  useradd pk
+  101  userdel -r pk
+  102  ls /home/
+  103  id pk
+  104  userdel -r jerry
+  105  ls /home/
+  106  id jerry
+  107  vim /etc/shadow
+  108  exit
+  109  bash
+  110  exit
+  111  bash
+  112  exit
+  113  useradd abc
+  114  passwd 
+  115  passwd abc
+  116  useradd xyz
+  117  passwd xyz
+  118  su - jk
+  119  exit
+  120  ps -aux
+  121  ps -aux | less
+  122  cat /etc/passwd | less
+  123   
+  124  more /etc/passwd
+  125  useradd --help
+  126  useradd -u 4090 -c "Hello" -g admin -G dev mk
+  127  id mk
+  128  tail -2 /etc/passwd
+  129  vim /etc/group
+  130  useradd -uo 4090 neel
+  131  useradd -ou 4090 neel
+  132  id neel
+  133  su - neel
+  134  useradd -N -M deep
+  135  tail -2 /etc/passwd
+  136  ls /home/
+  137  id deep
+  138  su - deep
+  139  useradd -r -s /sbin/nologin telegraf
+  140  id telegraf 
+  141  tail -2 /etc/passwd
+  142  su - telegraf 
+  143  usermod --help
+  144  id mk
+  145  usermod -G prod mk
+  146  id ml
+  147  \
+  148  id mk
+  149  usermod -aG dev mk
+  150  id mk
+  151  ls /home/
+  152  userdel neel
+  153  ls /home/
+  154  useradd neel
+  155  userdel -r neel
+  156  id neel
+  157  ls /home/
+  158  ls -l /home/
+  159  userdel -r abc
+  160  ls -l /home/
+  161  userdel --help
+  162  groupadd --help
+  163  groupadd -U dev
+  164  man groupadd 
+  165  groupmod --help
+  166  groupdel --help
+  167  tail -5 /etc/passwd
+  168  su jk
+  169  su - jk
+  170  vim /etc/login.defs 
+  171  useradd subham
+  172  chage -l subham 
+  173  useradd subham
+  174  vim /etc/login.defs 
+  175  su - subham 
+  176  touch /etc/skel/policy
+  177  useradd anil
+  178  su - anil
+  179  history 
+  180  which mkdir
+  181  ls
+  182  ls -l devops.txt 
+  183  ls -l jaipur/
+  184  ls -ld jaipur/
+  185  $PATH
+  186  history 
+  187  $PATH
+  188  ls
+  189  mkdir bin
+  190  vim bin/a.sh
+  191  ls -l bin/a.sh 
+  192  chmod a+x bin/a.sh 
+  193  ls -l bin/a.sh 
+  194  a.sh 
+  195  chmod a+x bin/a.sh 
+  196  vim bin/a.sh 
+  197  a.sh 
+  198  chmod g+w,o-r gip 
+  199  ls -l gip 
+  200  ls jaipur/
+  201  mkdir jaipur/{abc,xyz,pqr}
+  202  touch jaipur/file{1..3}.txt
+  203  ls -l jaipur/
+  204  chmod -R 777 jaipur/
+  205  ls -ld jaipur/
+  206  ls -l jaipur/
+  207  chmod -R 444 jaipur/
+  208  ls -ld jaipur/
+  209  ls -l jaipur/
+  210  chmod -R a=rwX jaipur/
+  211  ls -ld jaipur/
+  212  ls -l jaipur/
+  213  ls -l
+  214  tail /etc/passwd
+  215  chown deep jaipur/
+  216  ls -ld jaipur/
+  217  chmod -R ug=rwx,o=--- jaipur/
+  218  ls -ld jaipur/
+  219  ls -l jaipur/
+  220  chmod -R ug=rw,o=--- jaipur/
+  221  ls -l jaipur/
+  222  chmod -R ug=rwX,o=--- jaipur/
+  223  ls -ld jaipur/
+  224  ls -l jaipur/
+  225  su - deep
+  226  ls /
+  227  history >/user_permissions_history

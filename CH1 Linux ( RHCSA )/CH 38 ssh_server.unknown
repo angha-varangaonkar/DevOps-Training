@@ -1,0 +1,32 @@
+    1  exit
+    2  mkdir /data
+    3  lsblk -f
+    4  vim /etc/fstab 
+    5  mount -a
+    6  firewall-cmd --add-service=nfs --permanent 
+    7  firewall-cmd --add-service=nfs3 --permanent 
+    8  firewall-cmd --add-service=mountd --permanent 
+    9  firewall-cmd --add-service=rpc-bind --permanent 
+   10  firewall-cmd --reload 
+   11  systemctl enable --now nfs-server.service 
+   12  vim /etc/exports
+   13  systemctl restart nfs-server.service 
+   14  ifconfig 
+   15  vim /usr/local/bin/testapp
+   16  chmod a+x /usr/local/bin/testapp 
+   17  init 0
+   18  ifconfig 
+   19  ls
+   20  ssh root@192.168.172.132 
+   21  vim /etc/ssh/sshd_config
+   22  systemctl reload sshd
+   23  vim /etc/ssh/sshd_config
+   24  systemctl reload sshd
+   25  ifconfig 
+   26  vim .ssh/authorized_keys 
+   27  vim /etc/ssh/sshd_config
+   28  systemctl reload sshd
+   29  useradd user1
+   30  su - user1
+   31  history 
+   32  history >/ssh_server
